@@ -17,7 +17,6 @@ class SkillsType extends AbstractType
         $builder->add('skillname')->add('skillexperience')
             ->add('certification')
             ->add('skilllevel')
-            ->add('imagesize')
             ->add('imageFile', FileType::class)
 
 
