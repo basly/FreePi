@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new MyApp\JobOwnerBundle\MyAppJobOwnerBundle(),
             new MyApp\AdminBundle\MyAppAdminBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new MyApp\ForumBundle\MyAppForumBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

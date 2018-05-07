@@ -1,0 +1,32 @@
+{% extends '@Freelancer/Default/layout.html.twig' %}
+
+
+{% block js %}<script src="{{asset('bundles/freelancer/Front/js/jquery-3.3.1.min.js')}}"></script>{% endblock %}
+
+{% block content %}
+    <center>
+{{ form_start(form) }}
+        <div class="row" id="tab">
+            <div class="col-md-12">
+        <div class="col-md-12" id="livr">
+        <div class="form-group col-md-6">
+            {{ form_label(form.pieceJointe) }}
+            {{ form_errors(form.pieceJointe) }}
+            {{ form_widget(form.pieceJointe, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form_label(form.livredto) }}
+            {{ form_errors(form.livredto) }}
+            {{ form_widget(form.livredto, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form_label(form.project) }}
+            {{ form_errors(form.project) }}
+            {{ form_widget(form.project, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        </div>
+            </div>
+        </div>
+{{ form_end(form) }}
+    </center>
+{% endblock %}

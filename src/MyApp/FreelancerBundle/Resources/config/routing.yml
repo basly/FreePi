@@ -53,3 +53,7 @@ freelancer_Subscribe:
 freelancer_UnSubscribe:
     path:     /UnSubscribe/{idsubscriber}
     defaults: { _controller: FreelancerBundle:Freelancer:UnSubscribe }
+
+freelancer_new_livraison:
+    path:     /livraison/new
+    defaults: { _controller: FreelancerBundle:Livraison:newLivraison }

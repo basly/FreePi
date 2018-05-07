@@ -1,4 +1,73 @@
-{% extends '@MyAppAdmin/default/backLayout.html.twig' %}
-{% block test2 %}
-<h1>molyiktujyrhtgrfedzolikjhygfolikujyhtgrfdyikjnhgfds</h1>Admin
+{% extends '@MyAppAdmin/Default/backLayout.html.twig' %}
+{% block title %}Dashboard{% endblock %}
+{% block dash %}
+
+    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+        <div class="mdc-card">
+            <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-7">
+                    <section class="purchase__card_section">
+                        <p>Welcome to Admin Dashboard.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
+        <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-danger rounded">
+                        <i class="mdi mdi-account-settings text-white icon-md"></i>
+                    </div>
+                    <div class="text-wrapper pl-1">
+                        {% for jobowner in jobowners %}
+                        <h3 class="mdc-typography--display1 font-weight-bold mb-1">{{ jobowner|length }}</h3>
+                        {% endfor %}
+                        <p class="font-weight-normal mb-0 mt-0">JobOwners</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-success rounded">
+                        <i class="mdi mdi-basket text-white icon-md"></i>
+                    </div>
+                    <div class="text-wrapper pl-1">
+                        {% for project in projects %}
+                        <h3 class="mdc-typography--display1 font-weight-bold mb-1">{{ project|length }}</h3>
+                        {% endfor %}
+                        <p class="font-weight-normal mb-0 mt-0">Projects</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-warning rounded">
+                        <i class="mdi mdi-ticket text-white icon-md"></i>
+                    </div>
+                    <div class="text-wrapper pl-1">
+                        {% for topic in topics %}
+                        <h3 class="mdc-typography--display1 font-weight-bold mb-1">{{ topic|length }}</h3>
+                        {% endfor %}
+                        <p class="font-weight-normal mb-0 mt-0">Forum</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-primary rounded">
+                        <i class="mdi mdi-account-star text-white icon-md"></i>
+                    </div>
+                    <div class="text-wrapper pl-1">
+                        {% for freelancer in freelancers %}
+                        <h3 class="mdc-typography--display1 font-weight-bold mb-1">{{ freelancer|length }}</h3>
+                        {% endfor %}
+                        <p class="font-weight-normal mb-0 mt-0">Freelancers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

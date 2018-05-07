@@ -1,0 +1,145 @@
+{% extends '@MyAppAdmin/Default/backLayout.html.twig' %}
+{% block title %}Forum Admin {% endblock %}
+{% block css %}<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">{% endblock %}
+{% block body %}
+
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-6">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"><i class="fa fa-file"></i></span><h5>Recent Posts</h5>
+                    <span title="{{ posts|length }} Posts" class="label label-success tip-left">{{ posts|length }}</span>
+                </div>
+                <div class="widget-content nopadding">
+                    <ul class="recent-posts">
+
+                        {% for post in posts|slice(0, 5) %}
+                            <li>
+                                <div class="user-thumb">
+                                    <img width="40" height="40" alt="User" src="{{ asset('bundles/myappadmin/images/webrtc-icon.png') }}">
+                                </div>
+                                <div class="article-post">
+                                    {% if post.user is not null %}
+                                        {% set username = post.user.username %}
+                                        {% set email = '-' %}
+                                    {% else %}
+                                        {% set username = '' %}
+                                        {% set email = post.user.email %}
+                                    {% endif %}
+                                    <p>
+                                        <span class="user-info">Forum By : {{ username }} Date : {{ post.date|date("Y-m-d H:i:s") }}, {{ email }}</span><br />
+                                    </p>
+                                    <p class="content">
+                                        {{ post.content|length > 150 ? post.content|slice(0, 150) ~ '...' : post.content  }}
+                                    </p>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"><i class="fa fa-file"></i></span><h5>Recent Topics</h5>
+                    <span title="{{ topics|length }} Topics" class="label label-info tip-left">{{ topics|length }}</span>
+                </div>
+                <div class="widget-content nopadding">
+                    <ul class="recent-posts">
+
+                        {% for topic in topics|slice(0, 5) %}
+                            <li>
+                                <div class="user-thumb">
+                                    <img width="40" height="40" alt="User" src="{{ asset('bundles/myappadmin/images/topics.jpg') }}">
+                                </div>
+                                <div class="article-post">
+                                    <p>
+                                        <span class="user-info">Forum Date: {{ topic.date|date("Y-m-d H:i:s") }}</span><br />
+                                    </p>
+                                    <p class="content">
+                                        {{ topic.subject }}
+                                    </p>
+                                    <div class="pull-right">
+                                        <a href="" class="btn btn-primary btn-xs">{{ topic.category.name }} View</a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"><i class="fa fa-file"></i></span><h5>Category Manager</h5>
+                    <span title="{{ categories|length }} Forum Categories" class="label label-danger tip-left">{{ categories|length }}</span>
+                    <span title="{{ topics|length }} Forums" class="label label-warning tip-left">{{ topics|length }}</span>
+                </div>
+                <div class="widget-content nopadding">
+                    <ul class="recent-posts">
+                        <li class="viewall">
+                            <a class="tip-top" href="{{ path('my_app_admin_forum_create_new_category') }}"> Create New Category </a>
+                        </li>
+                        {% for category in categories %}
+                            <li>
+                                <h4>{{ category.name }}:</h4>
+                                <div>
+                                    <a href="{{ path('my_app_forum_new_topic', {'id': category.id}) }}" class="btn btn-success btn-xs">New Topic</a>
+                                    <a href="{{ path('my_app_admin_forum_edit_category', {'id': category.id}) }}" class="btn btn-warning btn-xs">Edit Catgeory</a>
+                                    <a href="{{ path('my_app_admin_forum_remove_category', {'id': category.id}) }}" class="btn btn-danger btn-xs">Remove Category</a>
+                                </div>
+                                <br />
+                                <span class="user-info">Topics {{ topics|length }}</span>
+
+                                <div class="clearfix"></div>
+                                <br />
+                                <div class="forums">
+                                    <h5>Category Name : {{ category.name  }}</h5>
+                                    <br />
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for topic in category.topics %}
+                                            <tr>
+                                                <td>{{ topic.subject }}</td>
+                                                <td>{{ topic.date|date }}</td>
+                                                <td class="text-center"><a href="{{ path('my_app_forum_edit_topic', {'id': category.id}) }}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a> <a href="{{ path('my_app_forum_delete_topic', {'id': category.id}) }}" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a></td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        {% endfor %}
+
+                        <li class="viewall">
+                            <a class="tip-top" href="{{ path('my_app_admin_forum_create_new_category') }}"> Create New Category </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -13,7 +13,32 @@ class AdminController extends Controller
 {
     public function adminAction()
     {
-        return $this->render('MyAppAdminBundle:Default:Admin_home.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $projects = $em->getRepository('MyAppForumBundle:Post')->findAll();
+        $topics = $em->getRepository('MyAppForumBundle:Topic')->findAll();
+
+
+        $role1='%ROLE_FREELANCER%';
+        $freelancers = $em->getRepository("FreelancerBundle:User")->createQueryBuilder('u1')
+            ->where('u1.roles LIKE :roles')
+            ->setParameter('roles', '%"'.$role1.'"%')
+            ->getQuery()
+            ->getResult();
+
+        $role2='%ROLE_JOBOWNER%';
+        $jobowners = $em->getRepository("FreelancerBundle:User")->createQueryBuilder('u2')
+            ->where('u2.roles LIKE :roles')
+            ->setParameter('roles', '%"'.$role2.'"%')
+            ->getQuery()
+            ->getResult();
+
+        return $this->render('MyAppAdminBundle:Default:Admin_home.html.twig', array(
+            'projects' => $projects,
+            'topics' => $topics,
+            'freelancers' => $freelancers,
+            'jobowners' => $jobowners
+        ));
     }
     public function ShowReclamationsAction()
     {

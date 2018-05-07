@@ -51,7 +51,7 @@ class Demande
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="MyApp\FreelancerBundle\Entity\User",inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="MyApp\FreelancerBundle\Entity\User",inversedBy="affected")
      * @ORM\JoinColumn(name="freelancer",referencedColumnName="id",onDelete="CASCADE")
      */
     private $freelancer;
@@ -78,6 +78,8 @@ class Demande
     {
         $this->freelancer = $freelancer;
     }
+
+
 
     /**
      * Get id

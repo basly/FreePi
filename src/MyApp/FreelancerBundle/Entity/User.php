@@ -101,17 +101,61 @@ protected $id;
 
 
     /**
-     * One User has Many Projects.
+     * One Jobonwer has Many Projects.
      * @ORM\OneToMany(targetEntity="MyApp\JobOwnerBundle\Entity\Project", mappedBy="jobowner")
      */
     public $projects;
 
-public function __construct()
-{
-parent::__construct();
-// your own logic
-    $this->projects= new ArrayCollection();
+    /**
+     * One Freelancer has Many Projects.
+     * @ORM\OneToMany(targetEntity="MyApp\FreelancerBundle\Entity\Demande", mappedBy="freelancer")
+     */
+    public $affected;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MyApp\ForumBundle\Entity\Topic", mappedBy="user")
+     */
+    private $topics;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MyApp\ForumBundle\Entity\Post", mappedBy="user")
+     */
+    private $posts;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MyApp\FreelancerBundle\Entity\Livraison", mappedBy="livredby")
+     */
+    private $livredbys;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MyApp\FreelancerBundle\Entity\Livraison", mappedBy="livredto")
+     */
+    private $livredtos;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MyApp\JobOwnerBundle\Entity\Payment", mappedBy="paidby")
+     */
+    private $paidbys;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MyApp\JobOwnerBundle\Entity\Payment", mappedBy="paidto")
+     */
+    private $paidtos;
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+        $this->projects= new ArrayCollection();
+        $this->topics = new ArrayCollection();
+        $this->posts = new ArrayCollection();
+        $this->livredbys = new ArrayCollection();
+        $this->livredtos = new ArrayCollection();
+        $this->paidbys = new ArrayCollection();
+        $this->paidtos = new ArrayCollection();
+        $this->affected = new ArrayCollection();
 }
+
 
     /**
      * @return string

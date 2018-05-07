@@ -19,6 +19,7 @@ class ProjectType extends AbstractType
             ->add('projectdescription')
             ->add('startdate')
             ->add('enddate')
+            ->add('price')
             ->add('payment', ChoiceType::class, array(
                 'choices'  => array(
                     'Virement' => 'Virement',

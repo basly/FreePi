@@ -7,7 +7,7 @@ my_app_job_owner_homepage:
     defaults: { _controller: MyAppJobOwnerBundle:JobOwner:jobOwner}
     methods:  GET
 
-
-
-
+my_app_job_owner_payment_page:
+    path:     /payment/new/{id}
+    defaults: { _controller: MyAppJobOwnerBundle:Payment:Payment}
 

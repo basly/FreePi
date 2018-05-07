@@ -1,6 +1,6 @@
-{% extends 'FreelancerBundle:Default:index.html.twig' %}
+{% extends 'FreelancerBundle:Default:layout.html.twig' %}
 
-{% block body %}
+{% block content %}
 <!-- //banner-2 -->
 <!-- w3_short -->
 <div class="services-breadcrumb">
@@ -70,6 +70,11 @@
             {{ form_errors(form.requiredskills) }}
             {{ form_widget(form.requiredskills, {'attr': {'class': 'form-control'}}) }}
         </div>
+        <div class="form-group col-md-3">
+            {{ form_label(form.price) }}
+            {{ form_errors(form.price) }}
+            {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+        </div>
 
     </div>
     <div class="col-md-12">
@@ -80,4 +85,6 @@
         </div>
     </div>
     {{ form_end(form) }}
+    </div>
+</div>
 {% endblock %}

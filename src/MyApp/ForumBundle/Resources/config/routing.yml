@@ -1,0 +1,16 @@
+my_app_forum_index:
+    path:     /index
+    defaults: { _controller: MyAppForumBundle:Forum:index }
+
+my_app_forum_new_topic:
+    path:     /newtopic/{id}
+    defaults: { _controller: MyAppForumBundle:Topic:newTopic }
+
+my_app_forum_edit_topic:
+    path:     /edittopic/{id}
+    defaults: { _controller: MyAppForumBundle:Topic:editTopic }
+
+
+my_app_forum_delete_topic:
+    path:     /delete/{id}
+    defaults: { _controller: MyAppForumBundle:Topic:deleteTopic }

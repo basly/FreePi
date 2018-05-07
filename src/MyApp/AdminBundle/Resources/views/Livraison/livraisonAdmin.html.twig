@@ -1,0 +1,46 @@
+{% extends '@MyAppAdmin/Default/backLayout.html.twig' %}
+{% block title %}Livraison Administration{% endblock %}
+{% block css %}<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">{% endblock %}
+{% block body %}
+    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+        <div class="mdc-card table-responsive">
+            <div class="table-heading px-2 px-1 border-bottom">
+                <h1 class="mdc-card__title mdc-card__title--large">Livraisons/Payments status</h1>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-left">Project</th>
+                    <th>Cost</th>
+                    <th>File</th>
+                    <th>Livred By</th>
+                    <th>Livred To</th>
+                    <th>Paid</th>
+                    <th>Livred</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for livraison in livraisons %}
+                <tr>
+                    <td class="text-left">{{ livraison.project.projectname }}</td>
+                    <td>{{ livraison.project.payment }}</td>
+
+                    <td>    <a href="{{ livraison.piecejointe }}" class="btn btn-primary btn-xs" target="_blank">View</a></td>
+
+
+                    <td>{{ livraison.livredby }}</td>
+                    <td>{{ livraison.livredby }}</td>
+                    {% for payment in payments %}
+                    <td>{{ payment.status }}</td>
+                    {% endfor %}
+                    <td>{{ livraison.status }}</td>
+                    <td><div class="col mdc-button" data-mdc-auto-init="MDCRipple"><i class="mdi mdi-heart text-blue"></i></div><div class="col mdc-button" data-mdc-auto-init="MDCRipple"><i class="mdi mdi-delete text-red"></i></div></td>
+                </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

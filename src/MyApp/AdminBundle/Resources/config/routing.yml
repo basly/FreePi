@@ -1,6 +1,6 @@
 my_app_admin_homepage:
     path:     /
-    defaults: { _controller: MyAppAdminBundle:Default:admin }
+    defaults: { _controller: MyAppAdminBundle:Admin:admin }
 
 my_app_admin_ShowReclamations:
     path:    /ShowReclamations
@@ -9,3 +9,39 @@ my_app_admin_ShowReclamations:
 my_app_admin_replyReclamation:
     path:    /ShowReclamation/{id}
     defaults: { _controller: MyAppAdminBundle:Admin:showReclamation }
+
+my_app_admin_forumpage:
+    path:     /forum
+    defaults: { _controller: MyAppAdminBundle:ForumAdmin:index }
+
+my_app_admin_forum_create_new_category:
+    path:     /forum/category/new
+    defaults: { _controller: MyAppAdminBundle:ForumAdmin:newCategory }
+
+my_app_admin_livraison_page:
+    path:     /livraison
+    defaults: { _controller: MyAppAdminBundle:LivraisonAdmin:index }
+
+my_app_admin_forum_edit_category:
+    path:     /category/edit/{id}
+    defaults: { _controller: MyAppAdminBundle:ForumAdmin:editCategory }
+
+
+my_app_admin_forum_remove_category:
+    path:     /category/delete/{id}
+    defaults: { _controller: MyAppAdminBundle:ForumAdmin:deleteCategory }
+
+my_app_admin_freelancerslist:
+    path:     /freelist
+    defaults: { _controller: MyAppAdminBundle:Freelancers:FreelancersList }
+
+my_app_admin_jobownerslist:
+    path:     /jobowlist
+    defaults: { _controller: MyAppAdminBundle:Jobowners:JobownersList }
+
+my_app_admin_statistiques:
+    path:     /statistiques
+    defaults: { _controller: MyAppAdminBundle:AdminStat:Admin }
+
+
+

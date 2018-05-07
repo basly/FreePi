@@ -2,6 +2,7 @@
 
 namespace MyApp\JobOwnerBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -59,9 +60,16 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="payment", type="string", length=255)
+     * @ORM\Column(name="payment", type="string",  length=255)
      */
     private $payment;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     */
+    private $price;
 
     /**
      * @var string
@@ -84,12 +92,59 @@ class Project
      */
     private $jobowner;
 
-
     /**
      * One Project has Many Demandes.
      * @ORM\OneToMany(targetEntity="MyApp\FreelancerBundle\Entity\Demande", mappedBy="project")
      */
     public $demandes;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MyApp\FreelancerBundle\Entity\Livraison", mappedBy="project")
+     */
+    private $livraisons;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MyApp\JobOwnerBundle\Entity\Payment", mappedBy="project")
+     */
+    private $payments;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MyApp\JobOwnerBundle\Entity\Payment", mappedBy="status")
+     */
+    private $status;
+
+
+    public function __construct()
+    {
+        // your own logic
+        $this->jobowner = new ArrayCollection();
+        $this->demandes = new ArrayCollection();
+        $this->livraisons = new ArrayCollection();
+        $this->payments = new ArrayCollection();
+        $this->status = new ArrayCollection();
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->projectname;
+    }
 
 
     /**
@@ -219,7 +274,7 @@ class Project
     /**
      * Set payment
      *
-     * @param string $payment
+     * @param float $payment
      *
      * @return Project
      */
@@ -233,7 +288,7 @@ class Project
     /**
      * Get payment
      *
-     * @return string
+     * @return float
      */
     public function getPayment()
     {
@@ -291,19 +346,66 @@ class Project
     /**
      * @return mixed
      */
-    public function getUser()
+    public function getJobowner()
     {
-        return $this->user;
+        return $this->jobowner;
     }
 
     /**
-     * @param mixed $user
+     * @param mixed $jobowner
      */
-    public function setUser($user)
+    public function setJobowner($jobowner)
     {
-        $this->user = $user;
+        $this->jobowner = $jobowner;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDemandes()
+    {
+        return $this->demandes;
+    }
+
+    /**
+     * @param mixed $demandes
+     */
+    public function setDemandes($demandes)
+    {
+        $this->demandes = $demandes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLivraisons()
+    {
+        return $this->livraisons;
+    }
+
+    /**
+     * @param mixed $livraisons
+     */
+    public function setLivraisons($livraisons)
+    {
+        $this->livraisons = $livraisons;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPayments()
+    {
+        return $this->payments;
+    }
+
+    /**
+     * @param mixed $payments
+     */
+    public function setPayments($payments)
+    {
+        $this->payments = $payments;
+    }
 
 }
 

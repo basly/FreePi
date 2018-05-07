@@ -69,7 +69,7 @@ class ProjectController extends Controller
         $form = $this->createForm('MyApp\JobOwnerBundle\Form\ProjectType', $project);
         $form->handleRequest($request);
         $user = $this->getUser();
-        $project->setUser($user);
+        $project->setJobowner($user);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($project);

@@ -1,6 +1,10 @@
+my_app_forum:
+    resource: "@MyAppForumBundle/Resources/config/routing.yml"
+    prefix:   forum/
+
 my_app_admin:
     resource: "@MyAppAdminBundle/Resources/config/routing.yml"
-    prefix:   /admin
+    prefix:   admin/
 
 my_app_job_owner:
     resource: "@MyAppJobOwnerBundle/Resources/config/routing.yml"

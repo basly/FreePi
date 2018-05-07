@@ -1,6 +1,6 @@
-{% extends 'FreelancerBundle:Default:index.html.twig' %}
+{% extends 'FreelancerBundle:Default:layout.html.twig' %}
 
-{% block body %}
+{% block content %}
     <div class="services-breadcrumb">
         <div class="agile_inner_breadcrumb">
             <ul class="w3_short">
@@ -44,6 +44,7 @@
                 <td>{{ project.requiredskills }}</td>
                 <td>
                 <a class="btn btn-default" href="{{ path('project_show', { 'id': project.id }) }}"><i class="	fa fa-eye"></i> show</a>
+                <a class="btn btn-default" href="{{ path('my_app_job_owner_payment_page', { 'id': project.id }) }}"><i class="	fa fa-cc-stripe"></i> Pay</a>
 
                 </td>
 

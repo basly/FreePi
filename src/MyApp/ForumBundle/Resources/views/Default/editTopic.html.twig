@@ -1,0 +1,39 @@
+
+{% extends '@Freelancer/Default/layout.html.twig' %}
+
+{% block title %}Edit Topic{% endblock %}
+
+{% block css %}<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">{% endblock %}
+
+{% block content %}
+
+    <hr />
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">Topic Edit</div>
+            <div class="panel-body">
+                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                <div class="form-group col-md-12">
+                    {{ form_label(form.subject) }}
+                    {{ form_widget(form.subject, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group col-md-12">
+                    {{ form_label(form.date) }}
+                    {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="col-md-8">
+                        {{ form_label(form.category) }}
+                        {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+{% endblock %}
